@@ -1,0 +1,245 @@
+---
+---
+
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+
+@import "minima";
+
+// ================================
+// Custom overrides for a cleaner, more polished look
+// ================================
+
+:root {
+  --accent: #2f6feb;
+  --text-main: #1f2328;
+  --text-muted: #57606a;
+  --border-color: #e8e8ea;
+  --code-bg: #282c34;
+  --code-text: #e6e6e6;
+  --inline-code-bg: #f1f2f4;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-main);
+  line-height: 1.75;
+  background: #ffffff;
+}
+
+.wrapper {
+  max-width: 740px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  border-top: none;
+  border-bottom: 1px solid var(--border-color);
+  padding: 28px 0;
+  min-height: auto;
+}
+
+.site-title,
+.site-title:visited {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-main) !important;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.site-nav .page-link {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.site-nav .page-link:not(:last-child) {
+  margin-right: 20px;
+}
+
+/* ---------- Home / post list ---------- */
+.home .page-heading {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.post-list-heading {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.post-list {
+  margin-left: 0;
+}
+
+.post-list > li {
+  list-style: none;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.post-list > li:first-child {
+  padding-top: 20px;
+}
+
+.post-list .post-link {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.post-list .post-link:hover {
+  color: var(--accent);
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* ---------- Post page ---------- */
+.post-header {
+  margin-bottom: 36px;
+}
+
+.post-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.post-content h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 56px;
+}
+
+.post-content h2 {
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.post-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 36px;
+  color: var(--accent);
+}
+
+.post-content p,
+.post-content li {
+  font-size: 16.5px;
+}
+
+.post-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(47, 111, 235, 0.35);
+}
+
+.post-content a:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Code ---------- */
+.post-content code,
+.post-content pre,
+.highlight,
+.highlighter-rouge .highlight {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.post-content code {
+  background: var(--inline-code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.86em;
+}
+
+.post-content pre {
+  background: var(--code-bg) !important;
+  border: none;
+  border-radius: 10px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.post-content pre code,
+.highlight,
+.highlighter-rouge .highlight,
+.highlighter-rouge .highlight pre {
+  background: transparent;
+  color: var(--code-text);
+  padding: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  border: none;
+}
+
+/* ---------- Tables ---------- */
+.post-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 28px 0;
+  font-size: 14.5px;
+  display: table;
+}
+
+.post-content table th,
+.post-content table td {
+  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+}
+
+.post-content table th {
+  background: #f6f8fa;
+  font-weight: 700;
+  text-align: left;
+}
+
+.post-content table tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+/* ---------- Blockquote ---------- */
+.post-content blockquote {
+  border-left: 3px solid var(--accent);
+  color: var(--text-muted);
+  font-style: normal;
+  padding: 4px 20px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 36px 0;
+}
+
+.footer-heading {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+hr {
+  border-color: var(--border-color);
+}
