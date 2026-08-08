@@ -178,21 +178,25 @@ body {
   background: var(--code-bg) !important;
   border: none;
   border-radius: 0;
-  padding: 18px 20px;
+  padding: 20px 24px !important;
   overflow-x: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.post-content pre code,
 .highlight,
-.highlighter-rouge .highlight,
-.highlighter-rouge .highlight pre {
+.highlighter-rouge .highlight {
+  background: transparent;
+  margin: 0;
+}
+
+.post-content pre code {
   background: transparent;
   color: var(--code-text);
-  padding: 0;
+  padding: 0 !important;
   font-size: 13.5px;
   line-height: 1.65;
   border: none;
+  display: block;
 }
 
 /* ---------- Tables ---------- */
