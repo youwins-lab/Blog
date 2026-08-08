@@ -3,3 +3,5 @@ description: 개인 스터디 기록
 theme: minima
 markdown: kramdown
 show_excerpts: true
+baseurl: "/Blog"
+url: "https://youwins-lab.github.io"
