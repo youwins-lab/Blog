@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "append 한 줄이 페타바이트가 되기까지: KV Cache는 왜 결국 스토리지로 내려갔나"
-date: 2026-08-16 00:00:00 +0900
-categories: study llm-serving
+date: 2026-08-16 10:00:00 +0900
+categories: [study, llm-serving]
+tags: [KV-Cache, LLM-Serving, GPU, Storage, NVIDIA, study-log]
 ---
 
 ## 들어가며
