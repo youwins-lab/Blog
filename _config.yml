@@ -2,6 +2,6 @@ title: Austin Kim's Blog
 description: 개인 스터디 기록
 theme: minima
 markdown: kramdown
-show_excerpts: true
+show_excerpts: false
 baseurl: "/Blog"
 url: "https://youwins-lab.github.io"
