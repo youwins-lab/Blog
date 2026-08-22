@@ -70,7 +70,7 @@ body::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 4px;
   background: linear-gradient(90deg, var(--accent) 0%, #06b6d4 50%, var(--accent) 100%);
   z-index: 1000;
 }
@@ -129,11 +129,41 @@ a {
   margin-right: 20px;
 }
 
-/* ---------- Home / post list ---------- */
+/* ---------- Home / hero ---------- */
 .home .page-heading {
   font-size: 26px;
   font-weight: 800;
   letter-spacing: -0.02em;
+}
+
+.hero {
+  padding: 10px 0 30px;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.hero-lede {
+  font-size: 18.5px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin-bottom: 14px;
+}
+
+.hero-stats {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
 }
 
 .post-list-heading {
@@ -143,11 +173,12 @@ a {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-faint);
-  margin-top: 40px;
+  margin-top: 8px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border-color);
 }
 
+/* ---------- Post list (card grid) ---------- */
 .post-list {
   margin-left: 0;
   margin-top: 8px;
@@ -157,52 +188,79 @@ a {
   list-style: none;
 }
 
-// Hide excerpt / "continue reading" markup if it ever renders
-.post-list > li > p,
-.post-list > li a.post-link + p {
-  display: none;
+.post-list .post-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  padding: 22px 24px;
+  margin: 14px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.post-list > li h3 {
+.post-list .post-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), #06b6d4);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease;
+}
+
+.post-list .post-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.post-list .post-card:hover::before {
+  transform: scaleY(1);
+}
+
+.post-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.post-card-row .post-meta {
   margin-bottom: 0;
 }
 
-.post-list > li a.post-link,
-.post-list > li h3 a {
-  display: block;
-  padding: 22px 20px;
-  margin: 14px 0;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  background: var(--bg-elevated);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-  text-decoration: none;
-}
-
-.post-list > li a.post-link:hover,
-.post-list > li h3 a:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-  transform: translateY(-1px);
-}
-
-.post-list .post-meta {
-  display: block;
-  order: -1;
-}
-
-.post-list h3 {
+.post-card-title {
   display: flex;
-  flex-direction: column;
-}
-
-.post-list .post-link,
-.post-list h3 a {
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   font-size: 19px;
   font-weight: 700;
   color: var(--text-main);
   letter-spacing: -0.01em;
   line-height: 1.5;
+}
+
+.post-card-arrow {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.post-list .post-card:hover .post-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .post-meta {
@@ -212,6 +270,54 @@ a {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 6px;
+}
+
+.reading-time {
+  color: var(--text-faint);
+}
+
+/* ---------- Tag pills ---------- */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-soft-strong);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+
+/* ---------- Back link (post page) ---------- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: color 0.15s ease, gap 0.15s ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+  gap: 9px;
+}
+
+.post-header .tag-row {
+  margin-bottom: 16px;
 }
 
 /* ---------- Post page ---------- */
