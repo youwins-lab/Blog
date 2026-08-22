@@ -5,6 +5,21 @@ date: 2026-08-22 01:00:00 +0000
 categories: study llm-serving
 ---
 
+## 핵심요약
+
+1. L4 24GB 한 장에서 Qwen2.5-7B-Instruct를 FP16 vs W8A8(FP8) vs W4A16(Int4/GPTQ)으로 벤치마크했다.
+2. FP16 decode는 memory bandwidth의 89.7%를 쓰면서 compute utilization은 0.22%에 불과한, 완전한 memory-bound 상태였다.
+3. concurrency 1→10에서 bandwidth 사용량은 그대로인데 throughput은 7.84배로 늘었다. batching은 가중치 로딩이라는 고정비를 여러 요청이 나눠 지는 방식이다.
+4. W4A16과 W8A8은 서로 다른 bottleneck을 공격한다. W4A16은 읽어오는 바이트를, W8A8은 compute time을 줄인다.
+5. **교차점이 실재한다.** concurrency 1·10에서는 W4A16이 앞서지만, concurrency 100에서는 W8A8이 역전한다 (TPOT 66.52ms vs 75.05ms).
+6. 이 역전은 median보다 tail(p99)에서 먼저 나타난다. SLO를 p99 기준으로 잡아야 하는 이유다.
+7. concurrency 100에서 latency는 W8A8이, throughput은 W4A16이 이긴다. W4A16의 더 큰 KV cache 여유(269K vs 213K tokens)가 더 큰 batch를 만들기 때문이다.
+8. Marlin kernel이 정상 동작해도 W4A16의 bandwidth 달성률은 67.9%에 그친다. 이론 대비 약 9ms가 dequantization 비용이다.
+9. 기동 로그의 "Maximum concurrency"는 max-model-len 기준 최악값이다. 실제 ShareGPT 워크로드에서는 PagedAttention 덕분에 표시값보다 9배 넘는 요청을 처리했다.
+10. **결론**: 낮은 부하라면 어디서든 W4A16, 높은 부하에서 latency가 SLO라면 W8A8, 높은 부하에서 throughput이 목표라면 W4A16. 단 이 순위는 L4(Ada) 세대에서 FP8 tensor core와 Marlin이 둘 다 살아있기에 나온 결과다.
+
+---
+
 ## 들어가며
 
 양자화를 설명하는 자료는 대개 두 갈래로 나눈다.
@@ -399,6 +414,7 @@ init engine (profile, create kv cache, warmup model) took 110.88 s
 
 ## 참고
 
+- [실습 Colab 노트북 (직접 실행한 결과)](https://colab.research.google.com/drive/1ODrXCv5SBQWsoPhhY-dtCr4opyxSt17x?usp=sharing) — 이 글의 3종 비교(FP16/W8A8/W4A16) 환경 구성부터 vLLM 서버 기동, concurrency별 벤치마크까지 직접 돌려서 나온 결과다. 위 숫자들을 그대로 재현해볼 수 있다.
 - 실습 노트북: [orca3/llm-model-inference](https://github.com/orca3/llm-model-inference) `ch06/quantization_3way_300.ipynb`
 - [vLLM 양자화 문서](https://docs.vllm.ai/en/latest/features/quantization/)
 - [1주차: GPT를 200줄의 순수 Python으로](https://youwins-lab.github.io/Blog/study/llm-serving/2026/08/08/microgpt-week1.html)
