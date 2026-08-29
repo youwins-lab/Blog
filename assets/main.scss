@@ -450,12 +450,16 @@ a {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
+  // minima's base stylesheet hardcodes `table { color: #3f3f3f }` for light mode;
+  // reset it here so body text stays legible against our dark-mode row backgrounds too.
+  color: var(--text-main);
 }
 
 .post-content table th,
 .post-content table td {
   border: 1px solid var(--border-color);
   padding: 10px 14px;
+  color: var(--text-main);
 }
 
 .post-content table th {
