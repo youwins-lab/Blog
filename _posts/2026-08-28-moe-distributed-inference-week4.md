@@ -20,7 +20,8 @@ categories: study llm-serving
 | GPU | B300 8장 × 2노드 = 16장 |
 | 노드 내 연결 | NVLink |
 | 노드 간 연결 | 이더넷 (RoCEv2) |
-| 모델 | 2.4조 파라미터 MoE, 토큰당 활성 950억 |
+| 모델 | Qwen3.8-2.4T-A95B-FP8 (2.4조 파라미터 MoE, 토큰당 활성 950억) |
+| KV 캐시 | Off (비활성화) |
 
 ### MoE가 네트워크를 쓰는 이유
 
