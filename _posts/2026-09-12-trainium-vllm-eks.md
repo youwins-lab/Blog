@@ -1,7 +1,9 @@
 ---
+layout: post
 title: "Trainium 위의 vLLM: EKS에서 LLM 서빙하고 측정한 기록"
 date: 2026-09-12
 tags: [LLM, vLLM, AWS, Trainium, EKS, Kubernetes, Neuron]
+categories: study llm-serving aws-trainium
 ---
 
 # Trainium 위의 vLLM
