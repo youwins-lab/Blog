@@ -3,6 +3,7 @@ layout: post
 title: "2.4T 파라미터 MoE 서빙: 8-GPU 한 노드 vs 16-GPU 두 노드"
 date: 2026-09-01 10:00:00 +0900
 categories: study llm-serving
+tags: [LLM, MoE, B300, NVFP4, FP8, NVLink, Networking, study-log]
 ---
 
 <style>
