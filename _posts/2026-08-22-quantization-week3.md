@@ -3,6 +3,7 @@ layout: post
 title: "4비트가 늘 빠른 건 아니었다: L4 한 장에서 찾은 양자화 교차점"
 date: 2026-08-22 01:00:00 +0000
 categories: study llm-serving
+tags: [LLM, Quantization, vLLM, GPTQ, FP8, L4, Qwen, study-log]
 ---
 
 ## 핵심요약
