@@ -3,6 +3,7 @@ layout: post
 title: "B300 GPU 16장에서 2.4조 파라미터 MoE, 병목은 어디였나"
 date: 2026-08-28 10:00:00 +0900
 categories: study llm-serving
+tags: [LLM, MoE, Distributed-Inference, B300, NVLink, RoCE, Networking, study-log]
 ---
 
 지난 글에서 GPU 한 장 위의 디코드가 메모리 대역폭은 89.7%를 쓰면서 연산은 0.22%밖에 안 쓴다는 걸 봤다. 디코드가 연산이 아니라 대역폭에 묶여 있다는 이야기였다.
